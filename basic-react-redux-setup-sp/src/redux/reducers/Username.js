@@ -1,16 +1,8 @@
-const initialState = {
-    users: []
-}
-const user = (state = { ...initialState }, action) => {
+const users = (state = [], action) => {
     switch (action.type) {
         case "ADD_USER":
-            const user = state.users
-            user.push(action.payload)
-            return {
-                ...state,
-                users: user
-            }
+            return [...state, action.payload]
         default: return state
     }
 }
-export default user
+export default users

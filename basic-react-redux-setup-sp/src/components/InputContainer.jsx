@@ -1,17 +1,20 @@
 import React, { useState } from 'react'
 import { withRouter } from "react-router";
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux';
+import { setTask } from '../redux/actions/taskAction'
+import { setUser } from '../redux/actions/userAction'
 const InputContainer = (props) => {
     const [username, setusername] = useState('')
     const [task, settask] = useState('')
     const addUser = () => {
         console.log(username)
-        props.setUser(username)
+        props.actions.setUser(username)
         setusername('')
     }
     const addTask = () => {
         console.log(task)
-        props.setTask(task)
+        props.actions.setTask(task)
         settask('')
     }
     return (
@@ -29,12 +32,18 @@ const InputContainer = (props) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        setUser: (user) => {
-            dispatch({ type: 'ADD_USER', payload: user })
+        // setUser: (user) => {
+        //     dispatch({ type: 'ADD_USER', payload: user })
+        // },
+        // setTask: (task) => {
+        //     dispatch({ type: 'ADD_TASK', payload: task })
+        // }
+        actions: bindActionCreators({
+            setTask,
+            setUser
         },
-        setTask: (task) => {
-            dispatch({ type: 'ADD_TASK', payload: task })
-        }
+
+            dispatch)
     }
 }
 export default connect(null, mapDispatchToProps)(withRouter(InputContainer))

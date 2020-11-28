@@ -25,8 +25,8 @@ const OutputContainer = (props) => {
 }
 const mapStateToProps = (state) => {
     return {
-        users: state.user.users,
-        tasks: state.task.tasks
+        users: state.users,
+        tasks: state.tasks
     }
 }
 export default connect(mapStateToProps, null)(withRouter(OutputContainer))

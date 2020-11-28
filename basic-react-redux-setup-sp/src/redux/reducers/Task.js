@@ -1,16 +1,9 @@
-const initialState = {
-    tasks: []
-}
-const task = (state = { ...initialState }, action) => {
+
+const tasks = (state = [], action) => {
     switch (action.type) {
         case "ADD_TASK":
-            const task = state.tasks
-            task.push(action.payload)
-            return {
-                ...state,
-                tasks: task
-            }
+            return [...state, action.payload]
         default: return state
     }
 }
-export default task
+export default tasks
