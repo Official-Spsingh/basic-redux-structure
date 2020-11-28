@@ -6,5 +6,3 @@ export const setUser = (data) => {
         })
     }
 }
-
-//not used in this project

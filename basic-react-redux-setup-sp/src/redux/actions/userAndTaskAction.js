@@ -1,7 +1,7 @@
-export const setTask = (data) => {
+export const setUserAndTask = (data) => {
     return (dispatch) => {
         dispatch({
-            type: "ADD_TASK",
+            type: "ADD_USER_TASK",
             payload: data
         })
     }

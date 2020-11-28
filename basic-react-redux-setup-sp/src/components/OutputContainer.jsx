@@ -20,13 +20,20 @@ const OutputContainer = (props) => {
                     props.tasks.map(u => <li>{u}</li>)
                 }
             </ul>
+            <h2>User and Tasks</h2>
+            <ul>
+                {
+                    props.usertasks.map(u => <li><span>{u.username}</span>,<span>{u.task}</span></li>)
+                }
+            </ul>
         </div>
     )
 }
 const mapStateToProps = (state) => {
     return {
         users: state.users,
-        tasks: state.tasks
+        tasks: state.tasks,
+        usertasks: state.usertasks
     }
 }
 export default connect(mapStateToProps, null)(withRouter(OutputContainer))

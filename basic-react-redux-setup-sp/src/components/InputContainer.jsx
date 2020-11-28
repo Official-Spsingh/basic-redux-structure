@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux';
 import { setTask } from '../redux/actions/taskAction'
 import { setUser } from '../redux/actions/userAction'
+import { setUserAndTask } from '../redux/actions/userAndTaskAction'
 const InputContainer = (props) => {
     const [username, setusername] = useState('')
     const [task, settask] = useState('')
@@ -17,6 +18,14 @@ const InputContainer = (props) => {
         props.actions.setTask(task)
         settask('')
     }
+    const addUserAndTask = () => {
+        let obj = {}
+        obj.username = username
+        obj.task = task
+        props.actions.setUserAndTask(obj)
+        setusername('')
+        settask('')
+    }
     return (
         <div>
             <h1>Input</h1>
@@ -26,6 +35,7 @@ const InputContainer = (props) => {
             <input type="text" value={username} onChange={(e) => setusername(e.target.value)} /><button onClick={addUser}>Add user</button><br></br>
             <label>Tasks</label>
             <input type="text" value={task} onChange={(e) => settask(e.target.value)} /><button onClick={addTask}>Add Tasks</button><br></br>
+            <button onClick={addUserAndTask}>Add user and task</button>
         </div>
     )
 }
@@ -40,7 +50,8 @@ const mapDispatchToProps = (dispatch) => {
         // }
         actions: bindActionCreators({
             setTask,
-            setUser
+            setUser,
+            setUserAndTask
         },
 
             dispatch)
